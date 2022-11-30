@@ -1,4 +1,4 @@
-# The Bright Learning Center Core Service
+# Laravel Auth Boilerplate
 
 ## Overview
 This repository is used to speed up Restful API development using JWT authentication
