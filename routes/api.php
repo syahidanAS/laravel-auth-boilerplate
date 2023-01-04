@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\StackController;
+use App\Http\Controllers\WorkController;
 use App\Http\Middleware\AuthenticateJWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,5 +33,10 @@ Route::group(['prefix' => 'auth', 'as'=> ''], function(){
 
 Route::middleware([AuthenticateJWT::class])->group(function(){
     Route::get('/me', [AuthController::class,'me']);
+    Route::post('/messages', [MessageController::class,'store']);
+    Route::post('/stacks', [StackController::class,'store']);
+    Route::delete('/stacks/{id}', [StackController::class,'destroy']);
+    Route::post('/works', [WorkController::class,'store']);
 });
 
+Route::get('/stacks', [StackController::class,'index']);
